@@ -1,0 +1,57 @@
+// package main
+
+import "fmt"
+
+type Student struct {
+	ID   int
+	Name string
+	GPA  float32
+}
+
+type Gamer struct {
+	Name  string
+	Games []string
+}
+
+func main() {
+	student := Student{1, "Ramadhani", 3.27}
+	gamer := Gamer{Name: "dhanidev"}
+
+	fmt.Println(student.Name)
+	graduate(&student)
+
+	fmt.Println(student.Name)
+
+	fmt.Println("===================")
+	student.grad()
+
+	fmt.Println(student.Name)
+
+	fmt.Println("=================")
+	gamer.addGame("crash bandicoot")
+	gamer.addGame("harvestmoon")
+	gamer.addGame("ayo dance")
+
+	for _, game := range gamer.Games {
+		fmt.Println(game)
+	}
+
+	fmt.Println(gamer)
+}
+
+//as func
+func graduate(student *Student) {
+	student.Name = student.Name + " S.Kom"
+}
+
+//as method
+func (student *Student) grad() {
+	student.Name = student.Name + " S.Kom"
+	// fmt.Println(student.Name)
+}
+
+//quiz
+
+func (gamer *Gamer) addGame(game string) {
+	gamer.Games = append(gamer.Games, game)
+}

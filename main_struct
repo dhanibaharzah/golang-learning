@@ -1,0 +1,113 @@
+// package main
+
+import "fmt"
+
+type User struct {
+	ID        int
+	FirstName string
+	LastName  string
+	email     string
+	IsActive  bool
+}
+
+type Group struct {
+	Name        string
+	Admin       User
+	Users       []User
+	IsAvailable bool
+}
+
+func main() {
+	//v1
+	user := User{}
+	user.ID = 1
+	user.FirstName = "dhaniee"
+	user.LastName = "barjah"
+	user.email = "root@golang.com"
+	user.IsActive = false
+
+	user2 := User{}
+	user2.ID = 2
+	user2.FirstName = "dhanieex"
+	user2.LastName = "barjahxx"
+	user2.email = "admin@golang.com"
+	user2.IsActive = true
+
+	//v2
+	user3 := User{
+		ID:        1,
+		FirstName: "Zalooo",
+		LastName:  "gorosei",
+		email:     "dhdka@ss.com",
+		IsActive:  true,
+	}
+
+	//v3
+	user4 := User{1, "masaseh", "ahh", "yau@gma.com", true}
+
+	fmt.Println(user)
+	fmt.Println(user2.LastName)
+	fmt.Println(user3)
+	fmt.Println(user4)
+
+	user5 := User{1, "iyasih", "yaudah", "yau@gmall.com", true}
+
+	disUser := displayUser(user4)
+	disUser2 := displayUser(user5)
+
+	fmt.Println(disUser)
+	fmt.Println(disUser2)
+
+	users := []User{user, user2}
+
+	group := Group{"Gamer", user, users, true}
+	displayGroup(group)
+
+	r := user.display()
+	fmt.Println(r)
+
+	group.disGroup()
+	// fmt.Println(re)
+}
+
+//method, method melekat pada struct, function hanya melekat pad package
+func (user User) display() string {
+	res := fmt.Sprintf("Name : %s %s, Email : %s", user.FirstName, user.LastName, user.email)
+	return res
+}
+
+//struct as params
+func displayUser(user User) string {
+	res := fmt.Sprintf("Name : %s %s, Email : %s", user.FirstName, user.LastName, user.email)
+	return res
+}
+
+//embedded struct using function
+func displayGroup(group Group) {
+	fmt.Println("==========")
+	fmt.Printf("Name : %s", group.Name)
+	fmt.Println("")
+	fmt.Printf("Member count: %d", len(group.Users))
+	fmt.Println("")
+
+	fmt.Println("Users: ")
+
+	for _, user := range group.Users {
+		fmt.Println("-", user.FirstName)
+	}
+}
+
+//embedded struct using method
+func (group Group) disGroup() {
+	fmt.Println("==========")
+	fmt.Printf("Name : %s", group.Name)
+	fmt.Println("")
+	fmt.Printf("Member count: %d", len(group.Users))
+	fmt.Println("")
+
+	fmt.Println("Users: ")
+
+	for _, user := range group.Users {
+		fmt.Println("-", user.FirstName)
+	}
+}

@@ -1,0 +1,59 @@
+// package main
+
+import (
+	"fmt"
+)
+
+func main_array() {
+	var languages [5]string
+	languages[0] = "a"
+	languages[1] = "b"
+	languages[2] = "c"
+	languages[3] = "d"
+	languages[4] = "e"
+
+	lang := [5]string{"f", "g", "h", "i", "j"} // array tipe 1
+
+	lang2 := [...]string{"k",
+		"l",
+		"m",
+		"n",
+		"o",
+	} // array tipe 2, [5] bisa diganti [...] untuk dinamis
+
+	fmt.Println(languages)
+
+	length := len(languages)
+
+	fmt.Println(length)
+
+	fmt.Println(lang)
+
+	fmt.Println(lang2)
+
+	//print array menggunakan for
+
+	for _, langNew := range lang2 {
+		fmt.Println(langNew)
+	}
+
+	//slice
+	var gamingConsoles []string
+
+	gamingConsoles = append(gamingConsoles, "ps4")
+	gamingConsoles = append(gamingConsoles, "ps5")
+
+	fmt.Println(gamingConsoles)
+
+	//slice v2
+	games := []string{
+		"xbox",
+		"nintendo",
+	}
+
+	fmt.Println(games)
+
+	for _, gm := range games {
+		fmt.Println(gm)
+	}
+}

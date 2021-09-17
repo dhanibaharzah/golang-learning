@@ -1,0 +1,45 @@
+// package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	stud := []map[string]string{
+		{"name": "dhani", "score": "A"},
+		{"name": "baharzah", "score": "B"},
+		{"name": "rama", "score": "C"},
+	}
+
+	fmt.Println(stud)
+
+	for _, student := range stud {
+		fmt.Println(student["name"], "-", student["score"])
+	}
+
+	//hitung rata2
+	scores := []int{100, 80, 75, 92, 70, 93, 88, 67}
+
+	score := 0
+	for _, v := range scores {
+		score += v
+	}
+
+	length := len(scores)
+
+	res := float64(score) / float64(length)
+
+	fmt.Println(res)
+
+	//cari nilai >= 90
+	var goodScore []int
+	for _, v := range scores {
+		if v >= 90 {
+			fmt.Println(v)
+			//or
+			goodScore = append(goodScore, v)
+		}
+	}
+
+	fmt.Println(goodScore)
+}

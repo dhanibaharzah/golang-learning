@@ -1,0 +1,49 @@
+// package main
+
+import (
+	"fmt"
+)
+
+//map, kvp, key value pair
+func main() {
+	// var myMap map[string]int
+
+	//map v1
+	myMap := map[string]int{}
+
+	myMap["ruby"] = 9
+	myMap["go"] = 9
+	myMap["javascript"] = 8
+
+	fmt.Println(myMap)
+
+	//map v2
+	myMap2 := map[string]string{
+		"ruby": "ok",
+		"go":   "more ok",
+		"js":   "hype",
+	}
+
+	fmt.Println(myMap2)
+
+	//map v3
+	for key, value := range myMap2 {
+		fmt.Println("key: ", key, "value: ", value)
+	}
+
+	fmt.Println("======")
+
+	//delete key in map
+	delete(myMap2, "ruby")
+
+	for key, value := range myMap2 {
+		fmt.Println("key: ", key, "value: ", value)
+	}
+
+	//check if a key is exist
+	value, isAvail := myMap2["python"]
+	fmt.Println(isAvail)
+	fmt.Println(value)
+	fmt.Println(len(value))
+
+}

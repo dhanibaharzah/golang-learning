@@ -1,0 +1,51 @@
+// package main
+
+import "fmt"
+
+func main() {
+	numA := 5
+	numB := &numA
+
+	fmt.Println(numA)
+	fmt.Println(numB)
+	fmt.Println(*numB)
+
+	*numB = 10
+
+	fmt.Println(numB)
+	fmt.Println(*numB)
+	fmt.Println(numA)
+
+	fmt.Println("=============")
+
+	var numberA int = 5
+	var numberB *int = &numberA //& means reference to memory address
+
+	fmt.Println(numberA)
+	fmt.Println(numberB)
+	fmt.Println(*numberB) //* means dereference from memory address, become the value of int in numberA
+
+	numberA = 19
+
+	fmt.Println(numberA)
+	fmt.Println(numberB)
+	fmt.Println(*numberB)
+
+	fmt.Println("=============")
+
+	number := 5
+
+	fmt.Println("alamat memory awal: ", &number)
+	fmt.Println("value awal: ", number)
+
+	change(&number, 100)
+
+	fmt.Println("alamat memory akhir: ", &number)
+	fmt.Println("value akhir: ", number)
+}
+
+func change(awal *int, akhir int) {
+	*awal = akhir
+	fmt.Println("alamat memory func: ", &awal)
+	fmt.Println("value di func", *awal)
+}

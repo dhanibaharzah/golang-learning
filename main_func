@@ -1,0 +1,131 @@
+// package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func main() {
+
+	print()
+
+	print2("gokil")
+
+	sentence := print3("golang")
+	fmt.Println(sentence)
+
+	//add
+	res := add(20, 30)
+	fmt.Println(res)
+
+	//calc multi return
+	luas, keliling := calc(10, 2)
+	fmt.Println(luas)
+	fmt.Println(keliling)
+
+	//calc predfined return
+	l, k := calc2(10, 2)
+	fmt.Println(l)
+	fmt.Println(k)
+
+	//quiz1
+	scores := []int{10, 5, 8, 9, 7}
+	total := sum(scores)
+	fmt.Println(total)
+
+	//quiz2 v1
+	// result := calculation(10, 2, "+")
+	// result1 := calculation(10, 2, "-")
+	// result2 := calculation(10, 2, "*")
+	// result3 := calculation(10, 2, "/")
+
+	// fmt.Println(result, result1, result2, result3)
+
+	//quiz2 v2
+	result, err := calculation(10, 2, "-")
+	if err != nil {
+		fmt.Println("ada kesalahan")
+		fmt.Println(err.Error())
+	}
+	fmt.Println(result)
+
+}
+
+func print() {
+	fmt.Println("goleng")
+}
+
+func print2(sentence string) {
+	fmt.Println(sentence)
+}
+
+func print3(sentence string) string {
+	newSentence := sentence + " banget"
+	return newSentence
+}
+
+func add(num1, num2 int) int {
+	res := num1 + num2
+	return res
+}
+
+//multiple return
+func calc(p, l int) (int, int) {
+	luas := p * l
+	keliling := 2 * (p + l)
+
+	return luas, keliling
+}
+
+//predifined return
+func calc2(p, l int) (luas int, keliling int) {
+	luas = p * l
+	keliling = 2 * (p + l)
+
+	return
+}
+
+//quiz1
+func sum(score []int) int {
+	scores := 0
+	for _, v := range score {
+		scores += v
+	}
+
+	return scores
+}
+
+//quiz2
+func calculation(num1, num2 int, opr string) (int, error) {
+	var res int
+	var err error
+
+	// v1
+	// if opr == "+" {
+	// 	res = num1 + num2
+	// } else if opr == "-" {
+	// 	res = num1 - num2
+	// } else if opr == "*" {
+	// 	res = num1 * num2
+	// } else if opr == "/" {
+	// 	res = num1 / num2
+	// } else {
+	// 	res = 0
+	// }
+
+	//v2
+	switch opr {
+	case "+":
+		res = num1 + num2
+	case "-":
+		res = num1 - num2
+	case "*":
+		res = num1 * num2
+	case "/":
+		res = num1 / num2
+	default:
+		err = errors.New("unknown operation")
+	}
+
+	return res, err
+}

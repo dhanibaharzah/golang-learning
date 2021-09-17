@@ -1,0 +1,109 @@
+// package main
+
+import (
+	"fmt"
+	"pertama/calculation"
+)
+
+func main_old() {
+	fmt.Println("hello world")
+	result := calculation.Add(8, 9)
+	resultTwo := calculation.Times(9, 10)
+
+	fmt.Println(result)
+	fmt.Println(resultTwo)
+
+	name := "goleng"
+	name = "php"
+
+	fmt.Println(name)
+
+	age := 9
+
+	if age > 10 {
+		fmt.Println("ok")
+	} else {
+		fmt.Println("not ok")
+	}
+
+	score := 80
+	var grade string
+	if score < 80 {
+		grade = "E"
+	} else if score <= 60 {
+		grade = "D"
+	} else {
+		grade = "none"
+	}
+
+	fmt.Println(grade)
+
+	//bentuk for 1
+	for i := 1; i <= 5; i++ {
+		fmt.Println(grade, i)
+	}
+
+	//for 2 kayak while
+	i := 1
+	for i <= 5 {
+		fmt.Println("ok", i)
+		i++
+	}
+
+	//for 3 mix dengan array
+	title := "golang asoy geboy"
+	for index, letter := range title {
+		fmt.Println("i:", index, "letter:", string(letter))
+	}
+
+	//--kalo ga perlu index
+	for _, letter := range title {
+		fmt.Println("letter:", string(letter))
+	}
+
+	//quiz 1
+	for index, letter := range title {
+		if index%2 == 0 {
+			fmt.Println(string(letter))
+		}
+	}
+
+	fmt.Println("==========")
+
+	//quiz 2
+	for _, letter := range title {
+		var l string = string(letter)
+
+		//if else
+		// if l == "a" {
+		// 	fmt.Println("a")
+		// } else if l == "i" {
+		// 	fmt.Println("i")
+		// } else if l == "u" {
+		// 	fmt.Println("u")
+		// } else if l == "e" {
+		// 	fmt.Println("e")
+		// } else if l == "o" {
+		// 	fmt.Println("o")
+		// }
+
+		//switch case
+		// switch {
+		// case l == "a":
+		// 	fmt.Println("a")
+		// case l == "i":
+		// 	fmt.Println("i")
+		// case l == "u":
+		// 	fmt.Println("u")
+		// case l == "e":
+		// 	fmt.Println("e")
+		// case l == "o":
+		// 	fmt.Println("o")
+		// }
+
+		switch l {
+		case "a", "i", "u", "e", "o":
+			fmt.Println(l)
+		}
+	}
+}
